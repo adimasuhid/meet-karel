@@ -62,4 +62,28 @@ describe('Karel', () => {
       assert.equal(karel.x, 2)
     })
   })
+
+  describe('#turnLeft', () => {
+    it('does not change position', () => {
+      const karel = new Karel({ x: 1, y: 2, direction: 'N' })
+      karel.turnLeft()
+
+      assert.equal(karel.x, 1)
+      assert.equal(karel.y, 2)
+    })
+
+    it('turns west given N', () => {
+      const karel = new Karel({ x: 1, y: 2, direction: 'N' })
+      karel.turnLeft()
+
+      assert.equal(karel.direction, 'W')
+    })
+
+    it('turns east given S', () => {
+      const karel = new Karel({ x: 1, y: 2, direction: 'S' })
+      karel.turnLeft()
+
+      assert.equal(karel.direction, 'E')
+    })
+  })
 })
