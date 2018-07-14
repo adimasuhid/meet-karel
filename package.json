@@ -1,0 +1,31 @@
+{
+  "name": "meet-karel",
+  "version": "0.1.0",
+  "description": "Simple JS implementation of Karel the robot",
+  "main": "app.js",
+  "standard": {
+    "globals": [
+      "describe",
+      "context",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach",
+      "it",
+      "expect"
+    ]
+  },
+  "scripts": {
+    "test": "mocha --recursive --require babel-core/register"
+  },
+  "author": "Ace Dimasuhid",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "mocha": "^5.2.0",
+    "standard": "^11.0.1"
+  }
+}
