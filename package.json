@@ -16,6 +16,7 @@
     ]
   },
   "scripts": {
+    "pretest": "standard",
     "test": "mocha --recursive --require babel-core/register"
   },
   "author": "Ace Dimasuhid",

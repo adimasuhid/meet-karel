@@ -5,35 +5,35 @@ describe('Karel', () => {
   describe('#move', () => {
     it('does not change direction', () => {
       const karel = new Karel({ x: 1, y: 2, direction: 'N' })
-      karel.move() 
+      karel.move()
 
       assert.equal(karel.direction(), 'N')
     })
 
     it('moves a step north given N', () => {
       const karel = new Karel({ x: 1, y: 2, direction: 'N' })
-      karel.move() 
+      karel.move()
 
       assert.deepEqual(karel.coordinates(), { x: 1, y: 1 })
     })
 
     it('moves a step south given S', () => {
       const karel = new Karel({ x: 1, y: 2, direction: 'S' })
-      karel.move() 
+      karel.move()
 
       assert.deepEqual(karel.coordinates(), { x: 1, y: 3 })
     })
 
     it('moves a step west given W', () => {
       const karel = new Karel({ x: 1, y: 2, direction: 'W' })
-      karel.move() 
+      karel.move()
 
       assert.deepEqual(karel.coordinates(), { x: 0, y: 2 })
     })
 
     it('moves a step west given E', () => {
       const karel = new Karel({ x: 1, y: 2, direction: 'E' })
-      karel.move() 
+      karel.move()
 
       assert.deepEqual(karel.coordinates(), { x: 2, y: 2 })
     })
@@ -88,7 +88,7 @@ describe('Karel', () => {
   describe('#pickUp', () => {
     it('puts object in the bag when can be picked up', () => {
       const karel = new Karel({ x: 1, y: 2, direction: 'E' })
-      const object = { canBePickedUp: () => true } 
+      const object = { canBePickedUp: () => true }
 
       karel.pickUp(object)
       assert(karel.isCarrying())
@@ -96,7 +96,7 @@ describe('Karel', () => {
 
     it('does not put object in bag when cannot be picked up', () => {
       const karel = new Karel({ x: 1, y: 2, direction: 'E' })
-      const object = { canBePickedUp: () => false } 
+      const object = { canBePickedUp: () => false }
 
       karel.pickUp(object)
       assert(!karel.isCarrying())
@@ -106,13 +106,13 @@ describe('Karel', () => {
   describe('#putDown', () => {
     it('removes object out of the bag', () => {
       const karel = new Karel({ x: 1, y: 2, direction: 'E' })
-      const object = { canBePickedUp: () => true } 
+      const object = { canBePickedUp: () => true }
 
       karel.pickUp(object)
       assert(karel.isCarrying())
 
       karel.putDown()
       assert(!karel.isCarrying())
-    }) 
+    })
   })
 })
