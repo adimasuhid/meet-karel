@@ -110,4 +110,35 @@ describe('Karel', () => {
       assert.equal(karel.direction, 'S')
     })
   })
+
+  describe('#pickUp', () => {
+    it('puts object in the bag when can be picked up', () => {
+      const karel = new Karel({ x: 1, y: 2, direction: 'E' })
+      const object = { canBePickedUp: () => true } 
+
+      karel.pickUp(object)
+      assert(karel.isCarrying())
+    })
+
+    it('does not put object in bag when cannot be picked up', () => {
+      const karel = new Karel({ x: 1, y: 2, direction: 'E' })
+      const object = { canBePickedUp: () => false } 
+
+      karel.pickUp(object)
+      assert(!karel.isCarrying())
+    })
+  })
+
+  describe('#putDown', () => {
+    it('removes object out of the bag', () => {
+      const karel = new Karel({ x: 1, y: 2, direction: 'E' })
+      const object = { canBePickedUp: () => true } 
+
+      karel.pickUp(object)
+      assert(karel.isCarrying())
+
+      karel.putDown()
+      assert(!karel.isCarrying())
+    }) 
+  })
 })
