@@ -1,5 +1,5 @@
 import assert from 'assert'
-import Tree from '../lib/tree.js'
+import Tree from '../../lib/models/tree.js'
 
 describe('Tree', () => {
   describe('#canBePickedUp', () => {

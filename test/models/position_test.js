@@ -1,5 +1,5 @@
 import assert from 'assert'
-import Position from '../lib/position.js'
+import Position from '../../lib/models/position.js'
 
 describe('Position', () => {
   it('does not save negative numbers', () => {

@@ -1,5 +1,5 @@
 import assert from 'assert'
-import Karel from '../lib/karel.js'
+import Karel from '../../lib/models/karel.js'
 
 describe('Karel', () => {
   describe('#move', () => {

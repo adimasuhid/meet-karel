@@ -1,5 +1,5 @@
 import assert from 'assert'
-import Boulder from '../lib/boulder.js'
+import Boulder from '../../lib/models/boulder.js'
 
 describe('Boulder', () => {
   describe('#canBePickedUp', () => {
