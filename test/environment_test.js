@@ -47,5 +47,18 @@ describe('Environment', () => {
         assert(environment.karel() != null)
       })
     })
+
+    describe('getModelFromPosition', () => {
+      it('returns model when available', () => {
+        const environment = new Environment({ width: 5, height: 4, boulderCount: 1 })
+        const coord = { x: 1, y: 1 }
+        
+        assert.deepEqual(environment.getModelFromPosition(coord), environment.karel())
+      }) 
+      
+      it('returns null when empty', () => {
+      
+      }) 
+    })
   })
 })
