@@ -27,7 +27,7 @@ describe('Environment', () => {
           { x: 2, y: 1 },
           { x: 0, y: 2 },
           { x: 1, y: 2 },
-          { x: 2, y: 2 },
+          { x: 2, y: 2 }
         ])
 
         assert.equal(environment.walls().length, 8)
@@ -52,16 +52,16 @@ describe('Environment', () => {
       it('returns model when available', () => {
         const environment = new Environment({ width: 5, height: 4, boulderCount: 1 })
         const coord = { x: 1, y: 1 }
-        
+
         assert.deepEqual(environment.getModelFromPosition(coord), environment.karel())
-      }) 
-      
+      })
+
       it('returns null when empty', () => {
         const environment = new Environment({ width: 5, height: 4, boulderCount: 0 })
         const coord = { x: 1, y: 2 }
-        
+
         assert.deepEqual(environment.getModelFromPosition(coord), null)
-      }) 
+      })
     })
   })
 })

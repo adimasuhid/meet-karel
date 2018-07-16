@@ -20,5 +20,11 @@ describe('Resolver', () => {
         assert.equal(newCoord.x - oldCoord.x, 0)
       })
     })
+
+    describe('pickUp', () => {
+      it('picks up the object in front', () => {
+      
+      }) 
+    })
   })
 })
