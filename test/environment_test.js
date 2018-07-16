@@ -1,4 +1,5 @@
 import assert from 'assert'
+import _ from 'underscore'
 import Environment from '../lib/environment.js'
 
 describe('Environment', () => {
@@ -11,7 +12,23 @@ describe('Environment', () => {
 
     describe('walls', () => {
       it('creates 8 walls given a 3x3 board', () => {
-        const environment = new Environment({ width: 3, height: 3, boulderCount: 1 })
+        const environment = new Environment({ width: 3, height: 3, boulderCount: 0 })
+
+        // 0-0 1-0 2-0
+        // 0-1     2-1
+        // 0-2 1-2 2-2
+
+        const wallCoords = _.map(environment.walls(), (wall) => wall.coordinates())
+        assert.deepEqual(wallCoords, [
+          { x: 0, y: 0 },
+          { x: 1, y: 0 },
+          { x: 2, y: 0 },
+          { x: 0, y: 1 },
+          { x: 2, y: 1 },
+          { x: 0, y: 2 },
+          { x: 1, y: 2 },
+          { x: 2, y: 2 },
+        ])
 
         assert.equal(environment.walls().length, 8)
       })
