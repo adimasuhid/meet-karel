@@ -57,7 +57,10 @@ describe('Environment', () => {
       }) 
       
       it('returns null when empty', () => {
-      
+        const environment = new Environment({ width: 5, height: 4, boulderCount: 0 })
+        const coord = { x: 1, y: 2 }
+        
+        assert.deepEqual(environment.getModelFromPosition(coord), null)
       }) 
     })
   })
