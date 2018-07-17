@@ -120,6 +120,6 @@ describe('Karel', () => {
     it('returns coordinates in front', () => {
       const karel = new Karel({ x: 1, y: 1, direction: 'N' })
       assert.deepEqual(karel.coordinatesAhead(), { x: 1, y: 0 })
-    }) 
+    })
   })
 })

@@ -26,8 +26,8 @@ describe('Resolver', () => {
         const oldCoord = environment.karel().coordinates()
 
         resolver.resolve(function () {
-          this.turnLeft();
-          this.turnLeft();
+          this.turnLeft()
+          this.turnLeft()
           this.move()
         })
 
@@ -41,13 +41,13 @@ describe('Resolver', () => {
       it('picks up the object in front', () => {
         const environment = new Environment({ width: 10, height: 5, boulderCount: 1 })
         const resolver = new Resolver({environment})
-              
+
         resolver.resolve(function () {
-          this.pickUp() 
+          this.pickUp()
         })
 
         assert(false)
-      }) 
+      })
     })
   })
 })

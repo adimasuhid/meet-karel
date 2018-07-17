@@ -4,10 +4,20 @@ import Environment from '../lib/environment.js'
 
 describe('Environment', () => {
   describe('#constructor', () => {
-    it('creates boulders', () => {
-      const environment = new Environment({ width: 10, height: 5, boulderCount: 3 })
+    describe('boulders', () => {
+      it('creates boulders from count', () => {
+        const environment = new Environment({ width: 10, height: 5, boulderCount: 3 })
 
-      assert.equal(environment.boulders().length, 3)
+        assert.equal(environment.boulders().length, 3)
+      })
+
+      it('creates boulders from position', () => {
+        const coord = { x: 1, y: 2 }
+        const environment = new Environment({ width: 10, height: 5, boulders: [coord] })
+
+        assert.equal(environment.boulders().length, 1)
+        assert.deepEqual(environment.boulders()[0].coordinates(), coord)
+      })
     })
 
     describe('walls', () => {
