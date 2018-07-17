@@ -50,5 +50,25 @@ describe('Resolver', () => {
         assert(environment.karel().isCarrying())
       })
     })
+
+    describe('putDown', () => {
+      it('puts down a carried object', () => {
+        const coord = { x: 1, y: 2 }
+        const environment = new Environment({ width: 10, height: 5, boulders: [coord] })
+        const resolver = new Resolver({environment})
+
+        resolver.resolve(function () {
+          this.pickUp()
+        })
+
+        assert(environment.karel().isCarrying())
+
+        resolver.resolve(function () {
+          this.putDown()
+        })
+
+        assert(!environment.karel().isCarrying())
+      })
+    })
   })
 })
