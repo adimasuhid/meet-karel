@@ -1,5 +1,6 @@
 import assert from 'assert'
 import Karel from '../../lib/models/karel.js'
+import Boulder from '../../lib/models/boulder.js'
 
 describe('Karel', () => {
   describe('#move', () => {
@@ -88,9 +89,9 @@ describe('Karel', () => {
   describe('#pickUp', () => {
     it('puts object in the bag when can be picked up', () => {
       const karel = new Karel({ x: 1, y: 2, direction: 'E' })
-      const object = { canBePickedUp: () => true }
+      const boulder = new Boulder({ x: 1, y: 3 })
 
-      karel.pickUp(object)
+      karel.pickUp(boulder)
       assert(karel.isCarrying())
     })
 
@@ -106,12 +107,13 @@ describe('Karel', () => {
   describe('#putDown', () => {
     it('removes object out of the bag', () => {
       const karel = new Karel({ x: 1, y: 2, direction: 'E' })
-      const object = { canBePickedUp: () => true }
+      const coord = { x: 1, y: 3 }
+      const boulder = new Boulder(coord)
 
-      karel.pickUp(object)
+      karel.pickUp(boulder)
       assert(karel.isCarrying())
 
-      karel.putDown()
+      karel.putDown(coord)
       assert(!karel.isCarrying())
     })
   })

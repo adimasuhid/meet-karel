@@ -19,6 +19,13 @@ describe('Boulder', () => {
 
       assert(boulder.isPickedUp())
     })
+
+    it('sets boulder position to null', () => {
+      const boulder = new Boulder({ x: 1, y: 2 })
+      boulder.pickUp()
+
+      assert.deepEqual(boulder.coordinates(), { x: null, y: null })
+    })
   })
 
   describe('#putDown', () => {

@@ -52,11 +52,15 @@ describe('Resolver', () => {
     })
 
     describe('putDown', () => {
-      it('puts down a carried object', () => {
-        const coord = { x: 1, y: 2 }
-        const environment = new Environment({ width: 10, height: 5, boulders: [coord] })
-        const resolver = new Resolver({environment})
+      let coord, environment, resolver
 
+      beforeEach(() => {
+        coord = { x: 1, y: 2 }
+        environment = new Environment({ width: 10, height: 5, boulders: [coord] })
+        resolver = new Resolver({environment})
+      })
+
+      it('puts down a carried object', () => {
         resolver.resolve(function () {
           this.pickUp()
         })
@@ -68,6 +72,27 @@ describe('Resolver', () => {
         })
 
         assert(!environment.karel().isCarrying())
+      })
+
+      it('repositions a carried object', () => {
+        resolver.resolve(function () {
+          this.pickUp()
+          this.move()
+          this.putDown()
+        })
+
+        assert.deepEqual(environment.boulders()[0].coordinates(), { x: 1, y: 3 })
+      })
+
+      it('does not put down an object when there is no place available', () => {
+        resolver.resolve(function () {
+          this.pickUp()
+          this.move()
+          this.move() // There is a tree in front at (1,4)
+          this.putDown()
+        })
+
+        assert(environment.karel().isCarrying())
       })
     })
   })
