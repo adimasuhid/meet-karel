@@ -5,7 +5,7 @@ import Resolver from '../lib/resolver.js'
 describe('Resolver', () => {
   describe('#resolve', () => {
     describe('move', () => {
-      it('runs any code given at resolve', () => {
+      it('moves karel forward', () => {
         const environment = new Environment({ width: 10, height: 5, boulderCount: 3 })
         const resolver = new Resolver({environment})
         const oldCoord = environment.karel().coordinates()
@@ -18,6 +18,22 @@ describe('Resolver', () => {
 
         assert.equal(newCoord.y - oldCoord.y, 1)
         assert.equal(newCoord.x - oldCoord.x, 0)
+      })
+
+      it('does not move karel when there is an obstacle', () => {
+        const environment = new Environment({ width: 10, height: 5, boulderCount: 0 })
+        const resolver = new Resolver({environment})
+        const oldCoord = environment.karel().coordinates()
+
+        resolver.resolve(function () {
+          this.turnLeft();
+          this.turnLeft();
+          this.move()
+        })
+
+        const newCoord = environment.karel().coordinates()
+
+        assert.deepEqual(oldCoord, newCoord)
       })
     })
 
