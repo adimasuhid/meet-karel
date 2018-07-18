@@ -12,7 +12,6 @@ describe('Game', () => {
       const environment = new Environment({ width: 10, height: 5, boulders: [coord] })
       const resolver = new Resolver({environment})
       const game = new Game({resolver, eventLoop})
-      const oldCoord = environment.karel().coordinates()
 
       game.resolve(function () {
         this.pickUp()
@@ -37,6 +36,7 @@ describe('Game', () => {
 
       eventLoop.enqueue(() => {
         assert.deepEqual(environment.boulders()[0].coordinates(), { x: 1, y: 3 })
+        eventLoop.stop()
         done()
       })
     })
