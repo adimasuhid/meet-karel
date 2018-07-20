@@ -10,11 +10,11 @@ describe('Tree', () => {
     })
   })
 
-  describe('#position', () => {
+  describe('#direction', () => {
     it('returns south', () => {
       const tree = new Tree({ x: 1, y: 2 })
 
-      assert.equal(tree.position(), 'S')
+      assert.equal(tree.direction(), 'S')
     })
   })
 })

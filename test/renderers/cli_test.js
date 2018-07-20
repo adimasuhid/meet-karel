@@ -18,7 +18,7 @@ describe('Renderer.Cli', () => {
 
       assert.deepEqual(contents, [
         '##########',
-        '#k       #',
+        '#↓       #',
         '#*       #',
         '#        #',
         '##########'

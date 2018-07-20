@@ -10,11 +10,11 @@ describe('Boulder', () => {
     })
   })
 
-  describe('#position', () => {
+  describe('#direction', () => {
     it('returns south', () => {
       const boulder = new Boulder({ x: 1, y: 2 })
 
-      assert.equal(boulder.position(), 'S')
+      assert.equal(boulder.direction(), 'S')
     })
   })
 
