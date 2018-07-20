@@ -6,7 +6,7 @@ describe('Renderer.Cli', () => {
   describe('#render', () => {
     it('displays the board', () => {
       const coord = { x: 1, y: 2 }
-      let contents = []
+      const contents = []
       const environment = new Environment({ width: 10, height: 5, boulders: [coord] })
       const renderer = new Cli({
         environment,
@@ -17,11 +17,11 @@ describe('Renderer.Cli', () => {
       renderer.render()
 
       assert.deepEqual(contents, [
-        "##########",
-        "#k       #",
-        "#*       #",
-        "#        #",
-        "##########"
+        '##########',
+        '#k       #',
+        '#*       #',
+        '#        #',
+        '##########'
       ])
     })
   })
