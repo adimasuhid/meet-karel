@@ -10,6 +10,14 @@ describe('Boulder', () => {
     })
   })
 
+  describe('#position', () => {
+    it('returns south', () => {
+      const boulder = new Boulder({ x: 1, y: 2 })
+
+      assert.equal(boulder.position(), 'S')
+    })
+  })
+
   describe('#pickUp', () => {
     it('sets boulder pickup status to true', () => {
       const boulder = new Boulder({ x: 1, y: 2 })

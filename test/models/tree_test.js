@@ -9,4 +9,12 @@ describe('Tree', () => {
       assert(!tree.canBePickedUp())
     })
   })
+
+  describe('#position', () => {
+    it('returns south', () => {
+      const tree = new Tree({ x: 1, y: 2 })
+
+      assert.equal(tree.position(), 'S')
+    })
+  })
 })
