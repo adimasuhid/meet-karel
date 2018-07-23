@@ -1,5 +1,5 @@
 import assert from 'assert'
-import Environment from '../lib/environment.js'
+import Board from '../lib/board.js'
 import Resolver from '../lib/resolver.js'
 import EventLoop from '../lib/event_loop.js'
 import Cli from '../lib/renderers/cli.js'
@@ -12,10 +12,10 @@ describe('Game', () => {
       const contents = []
 
       const eventLoop = new EventLoop({ speed: 5 })
-      const environment = new Environment({ width: 10, height: 5, boulders: [coord] })
-      const resolver = new Resolver({environment})
+      const board = new Board({ width: 10, height: 5, boulders: [coord] })
+      const resolver = new Resolver({board})
       const renderer = new Cli({
-        environment,
+        board,
         clearScreen: () => {},
         renderRow: contents.push.bind(contents)
       })
@@ -29,7 +29,7 @@ describe('Game', () => {
       })
 
       eventLoop.enqueue(() => {
-        assert(environment.karel().isCarrying())
+        assert(board.karel().isCarrying())
       })
 
       // Going back so I can drop the boulder
@@ -43,7 +43,7 @@ describe('Game', () => {
       })
 
       eventLoop.enqueue(() => {
-        assert.deepEqual(environment.boulders()[0].coordinates(), { x: 1, y: 3 })
+        assert.deepEqual(board.boulders()[0].coordinates(), { x: 1, y: 3 })
         eventLoop.stop()
         done()
       })

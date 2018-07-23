@@ -1,29 +1,29 @@
 import assert from 'assert'
-import Environment from '../lib/environment.js'
+import Board from '../lib/board.js'
 import Resolver from '../lib/resolver.js'
 
 describe('Resolver', () => {
   describe('#resolve', () => {
     describe('move', () => {
       it('moves karel forward', () => {
-        const environment = new Environment({ width: 10, height: 5, boulderCount: 3 })
-        const resolver = new Resolver({environment})
-        const oldCoord = environment.karel().coordinates()
+        const board = new Board({ width: 10, height: 5, boulderCount: 3 })
+        const resolver = new Resolver({board})
+        const oldCoord = board.karel().coordinates()
 
         resolver.resolve(function () {
           this.move()
         })
 
-        const newCoord = environment.karel().coordinates()
+        const newCoord = board.karel().coordinates()
 
         assert.equal(newCoord.y - oldCoord.y, 1)
         assert.equal(newCoord.x - oldCoord.x, 0)
       })
 
       it('does not move karel when there is an obstacle', () => {
-        const environment = new Environment({ width: 10, height: 5, boulderCount: 0 })
-        const resolver = new Resolver({environment})
-        const oldCoord = environment.karel().coordinates()
+        const board = new Board({ width: 10, height: 5, boulderCount: 0 })
+        const resolver = new Resolver({board})
+        const oldCoord = board.karel().coordinates()
 
         resolver.resolve(function () {
           this.turnLeft()
@@ -31,7 +31,7 @@ describe('Resolver', () => {
           this.move()
         })
 
-        const newCoord = environment.karel().coordinates()
+        const newCoord = board.karel().coordinates()
 
         assert.deepEqual(oldCoord, newCoord)
       })
@@ -40,24 +40,24 @@ describe('Resolver', () => {
     describe('pickUp', () => {
       it('picks up the object in front', () => {
         const coord = { x: 1, y: 2 }
-        const environment = new Environment({ width: 10, height: 5, boulders: [coord] })
-        const resolver = new Resolver({environment})
+        const board = new Board({ width: 10, height: 5, boulders: [coord] })
+        const resolver = new Resolver({board})
 
         resolver.resolve(function () {
           this.pickUp()
         })
 
-        assert(environment.karel().isCarrying())
+        assert(board.karel().isCarrying())
       })
     })
 
     describe('putDown', () => {
-      let coord, environment, resolver
+      let coord, board, resolver
 
       beforeEach(() => {
         coord = { x: 1, y: 2 }
-        environment = new Environment({ width: 10, height: 5, boulders: [coord] })
-        resolver = new Resolver({environment})
+        board = new Board({ width: 10, height: 5, boulders: [coord] })
+        resolver = new Resolver({board})
       })
 
       it('puts down a carried object', () => {
@@ -65,13 +65,13 @@ describe('Resolver', () => {
           this.pickUp()
         })
 
-        assert(environment.karel().isCarrying())
+        assert(board.karel().isCarrying())
 
         resolver.resolve(function () {
           this.putDown()
         })
 
-        assert(!environment.karel().isCarrying())
+        assert(!board.karel().isCarrying())
       })
 
       it('repositions a carried object', () => {
@@ -81,7 +81,7 @@ describe('Resolver', () => {
           this.putDown()
         })
 
-        assert.deepEqual(environment.boulders()[0].coordinates(), { x: 1, y: 3 })
+        assert.deepEqual(board.boulders()[0].coordinates(), { x: 1, y: 3 })
       })
 
       it('does not put down an object when there is no place available', () => {
@@ -92,7 +92,7 @@ describe('Resolver', () => {
           this.putDown()
         })
 
-        assert(environment.karel().isCarrying())
+        assert(board.karel().isCarrying())
       })
     })
   })
