@@ -4,6 +4,9 @@
   "description": "Simple JS implementation of Karel the robot",
   "main": "app.js",
   "standard": {
+    "ignore": [
+      "dist/" 
+    ],
     "globals": [
       "describe",
       "context",
@@ -16,6 +19,9 @@
     ]
   },
   "scripts": {
+    "start": "npm run webpack",
+    "webpack": "webpack -d --watch",
+    "standard": "node_modules/standard/bin/cmd.js",
     "pretest": "standard",
     "test": "mocha --recursive --require babel-core/register"
   },
@@ -23,15 +29,19 @@
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.3",
-    "standard": "^11.0.1"
+    "standard": "^11.0.1",
+    "webpack-cli": "^3.1.0"
   },
   "dependencies": {
     "clear": "^0.1.0",
-    "underscore": "^1.9.1"
+    "underscore": "^1.9.1",
+    "webpack": "^4.16.2"
   }
 }
