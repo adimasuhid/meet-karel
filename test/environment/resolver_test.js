@@ -1,6 +1,6 @@
 import assert from 'assert'
-import Board from '../lib/board.js'
-import Resolver from '../lib/resolver.js'
+import Board from '../../lib/environment/board.js'
+import Resolver from '../../lib/environment/resolver.js'
 
 describe('Resolver', () => {
   describe('#resolve', () => {

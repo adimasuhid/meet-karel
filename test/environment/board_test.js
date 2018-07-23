@@ -1,6 +1,6 @@
 import assert from 'assert'
 import _ from 'underscore'
-import Board from '../lib/board.js'
+import Board from '../../lib/environment/board.js'
 
 describe('Board', () => {
   describe('#constructor', () => {

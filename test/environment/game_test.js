@@ -1,9 +1,9 @@
 import assert from 'assert'
-import Board from '../lib/board.js'
-import Resolver from '../lib/resolver.js'
-import EventLoop from '../lib/event_loop.js'
-import Cli from '../lib/renderers/cli.js'
-import Game from '../lib/game.js'
+import Board from '../../lib/environment/board.js'
+import Resolver from '../../lib/environment/resolver.js'
+import EventLoop from '../../lib/environment/event_loop.js'
+import Cli from '../../lib/renderers/cli.js'
+import Game from '../../lib/environment/game.js'
 
 describe('Game', () => {
   describe('#resolve', () => {

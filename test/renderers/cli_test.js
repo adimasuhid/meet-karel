@@ -1,5 +1,5 @@
 import assert from 'assert'
-import Board from '../../lib/board.js'
+import Board from '../../lib/environment/board.js'
 import Cli from '../../lib/renderers/cli.js'
 
 describe('Renderer.Cli', () => {

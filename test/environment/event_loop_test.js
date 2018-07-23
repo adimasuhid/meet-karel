@@ -1,5 +1,5 @@
 import assert from 'assert'
-import EventLoop from '../lib/event_loop.js'
+import EventLoop from '../../lib/environment/event_loop.js'
 
 describe('EventLoop', () => {
   it('works', (done) => {
