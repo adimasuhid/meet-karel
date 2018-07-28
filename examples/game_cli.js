@@ -1,8 +1,8 @@
-import Board from '../environment/board.js'
-import Resolver from '../environment/resolver.js'
-import EventLoop from '../environment/event_loop.js'
-import Game from '../environment/game.js'
-import Cli from '../renderers/cli.js'
+import Board from '../lib/environment/board.js'
+import Resolver from '../lib/environment/resolver.js'
+import EventLoop from '../lib/environment/event_loop.js'
+import Game from '../lib/environment/game.js'
+import Cli from '../lib/renderers/cli.js'
 
 const eventLoop = new EventLoop({ speed: 1000 })
 const coord = { x: 1, y: 2 }
