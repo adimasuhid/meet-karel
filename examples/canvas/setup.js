@@ -1,2 +1,2 @@
 // Setup Karel
-Karel.game.attach(document.getElementById("game"))
+Karel.game.attach(document.getElementById('game'))
