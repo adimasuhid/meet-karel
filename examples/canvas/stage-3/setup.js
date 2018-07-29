@@ -1,7 +1,13 @@
-// Stage 1
+// Stage 3
 (function () {
   let eventLoop = new Karel.EventLoop({ speed: 1000 })
-  let board = new Karel.Board({ width: 15, height: 10, boulders: [] })
+  let boulderCoords = [{ x: 6, y: 5 }, { x: 1, y: 8 }, { x: 12, y: 3 }]
+  let wallCoords = [
+    { x: 7, y: 5 }, { x: 6, y: 4 }, { x: 1, y: 7 }, 
+    { x: 2, y: 7 }, { x: 12, y: 2 }, { x: 12, y: 4 },
+    { x: 11, y: 2 }, { x: 11, y: 3 }, { x: 11, y: 4 },
+  ]
+  let board = new Karel.Board({ width: 15, height: 10, boulders: boulderCoords, walls: wallCoords })
   let resolver = new Karel.Resolver({ board: board })
   let renderer = new Karel.Canvas({ board: board })
   window.game = new Karel.Game({ resolver: resolver, eventLoop: eventLoop, renderer: renderer })

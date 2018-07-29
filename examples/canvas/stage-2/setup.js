@@ -1,4 +1,4 @@
-// Stage 1
+// Stage 2
 (function () {
   let eventLoop = new Karel.EventLoop({ speed: 1000 })
   let boulderCoord = { x: 6, y: 5 }
