@@ -1,6 +1,6 @@
 // Stage 3
 (function () {
-  let eventLoop = new Karel.EventLoop({ speed: 1000 })
+  let eventLoop = new Karel.EventLoop({ speed: 500 })
   let boulderCoords = [{ x: 6, y: 5 }, { x: 1, y: 8 }, { x: 12, y: 3 }]
   let wallCoords = [
     { x: 7, y: 5 }, { x: 6, y: 4 }, { x: 1, y: 7 }, 
