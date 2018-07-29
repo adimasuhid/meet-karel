@@ -19,3 +19,5 @@ document.getElementById("run").addEventListener("click", function () {
 document.getElementById("stop").addEventListener("click", function () {
   window.Karel.game.stop()
 })
+
+window.Karel.game.render()
