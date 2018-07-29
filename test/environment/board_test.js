@@ -48,6 +48,13 @@ describe('Board', () => {
 
         assert.equal(board.walls().length, 14)
       })
+
+      it('creates custom walls', () => {
+        const coord = { x: 2, y: 2 }
+        const board = new Board({ width: 5, height: 4, boulderCount: 1, walls: [coord] })
+
+        assert.equal(board.walls().length, 15)
+      })
     })
 
     describe('karel', () => {
@@ -60,7 +67,8 @@ describe('Board', () => {
 
     describe('getModelFromPosition', () => {
       it('returns model when available', () => {
-        const board = new Board({ width: 5, height: 4, boulderCount: 1 })
+        const boulderCoord = { x: 1, y: 2 }
+        const board = new Board({ width: 5, height: 4, boulders: [boulderCoord] })
         const coord = { x: 1, y: 1 }
 
         assert.deepEqual(board.getModelFromPosition(coord), board.karel())
