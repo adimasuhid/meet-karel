@@ -5,7 +5,8 @@
   "main": "app.js",
   "standard": {
     "ignore": [
-      "dist/"
+      "dist/",
+      "examples/"
     ],
     "globals": [
       "describe",
