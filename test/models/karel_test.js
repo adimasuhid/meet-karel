@@ -3,6 +3,21 @@ import Karel from '../../lib/models/karel.js'
 import Boulder from '../../lib/models/boulder.js'
 
 describe('Karel', () => {
+  it('does not move when dead', () => {
+    const karel = new Karel({ x: 1, y: 2, direction: 'N', alive: false })
+    karel.move()
+
+    assert.deepEqual(karel.coordinates(), { x: 1, y: 2 })
+
+    karel.turnLeft()
+
+    assert.equal(karel.direction(), 'N')
+
+    karel.turnRight()
+
+    assert.equal(karel.direction(), 'N')
+  })
+
   describe('#move', () => {
     it('does not change direction', () => {
       const karel = new Karel({ x: 1, y: 2, direction: 'N' })
@@ -86,6 +101,20 @@ describe('Karel', () => {
     })
   })
 
+  describe('#status', () => {
+    it('returns alive when alive', () => {
+      const karel = new Karel({ x: 1, y: 2, direction: 'E' })
+
+      assert.equal(karel.status(), 'alive')
+    })
+
+    it('returns dead when not alive', () => {
+      const karel = new Karel({ x: 1, y: 2, direction: 'E', alive: false })
+
+      assert.equal(karel.status(), 'dead')
+    })
+  })
+
   describe('#pickUp', () => {
     it('puts object in the bag when can be picked up', () => {
       const karel = new Karel({ x: 1, y: 2, direction: 'E' })
@@ -95,12 +124,27 @@ describe('Karel', () => {
       assert(karel.isCarrying())
     })
 
-    it('does not put object in bag when cannot be picked up', () => {
-      const karel = new Karel({ x: 1, y: 2, direction: 'E' })
-      const object = { canBePickedUp: () => false }
+    it('does not put anything in bag when there is no object', () => {
 
-      karel.pickUp(object)
-      assert(!karel.isCarrying())
+    })
+
+    context('when object cannot be picked up', () => {
+      it('does not put object in bag', () => {
+        const karel = new Karel({ x: 1, y: 2, direction: 'E' })
+        const object = { canBePickedUp: () => false }
+
+        karel.pickUp(object)
+        assert(!karel.isCarrying())
+      })
+
+      it('kills karel', () => {
+        const karel = new Karel({ x: 1, y: 2, direction: 'E' })
+        const object = { canBePickedUp: () => false }
+
+        assert(karel.alive())
+        karel.pickUp(object)
+        assert(!karel.alive())
+      })
     })
   })
 
