@@ -17,4 +17,19 @@ describe('EventLoop', () => {
 
     eventLoop.execute()
   })
+
+  describe('Clear', () => {
+    it('removes queue items', () => {
+      const eventLoop = new EventLoop({ speed: 5 })
+      let sentence = 'quick'
+
+      eventLoop.enqueue(() => { sentence = sentence + 'brown' })
+
+      assert.equal(eventLoop.count(), 1)
+
+      eventLoop.clear()
+
+      assert.equal(eventLoop.count(), 0)
+    })
+  })
 })
