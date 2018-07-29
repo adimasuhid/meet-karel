@@ -7,14 +7,41 @@
         <style>
             body {
                 font-family: sans-serif;
-                margin: 0 auto;
-                max-width: 30rem;
+                <!--margin: 0 auto;-->
+                <!--max-width: 30rem;-->
+            }
+            .row {
+                display: flex;
+            }
+           
+            .column {
+                flex: 50%;
+            }
+            #editor-container {
+              position: relative;
+            }
+            #editor {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
             }
         </style>
     </head>
     <body>
         <h1>Karel the Game</h1>
-        <div id="game"></div>
+        <div class="row">
+          <div class="column">
+            <div id="editor-container">
+              <div id="editor">// This is where your code lives</div>
+            </div>
+          </div>
+        
+          <div class="column">
+            <div id="game"></div>
+          </div>
+        </div>
 
         <div id="asset-source" style="display: none;">
           <img id="floor_tile" src="./assets/floor_grass.png">
@@ -32,6 +59,7 @@
           <img id="karel_W_1" src="./assets/karel_W_1.png">
         </div>
         <script src="../../dist/karel.js"></script>
+        <script src="./plugins/ace.js" type="text/javascript" charset="utf-8"></script>
         <script src="./setup.js"></script>
     </body>
 </html>
