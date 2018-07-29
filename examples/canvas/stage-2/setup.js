@@ -17,7 +17,7 @@
 
   document.getElementById("run").addEventListener("click", function () {
     try {
-      window.Karel.game.resolve(function () {
+      window.game.resolve(function () {
         eval(window.editor.getValue())
       })
     } catch (e) {
