@@ -7,9 +7,6 @@
   let eventLoop = new Karel.EventLoop({ speed: 500 })
   let boulderCoords = [
     { x: randomInt(1, 13), y: randomInt(1, 8) },
-    { x: randomInt(1, 13), y: randomInt(1, 8) },
-    { x: randomInt(1, 13), y: randomInt(1, 8) },
-    { x: randomInt(1, 13), y: randomInt(1, 8) },
   ]
 
   let wallCoords = [
