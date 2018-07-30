@@ -7,7 +7,7 @@ import Game from '../../lib/environment/game.js'
 
 describe('Game', () => {
   describe('#resolve', () => {
-    it('runs as a game', (done) => {
+    it('runs as a game', () => {
       const coord = { x: 1, y: 2 }
       const contents = []
 
@@ -28,9 +28,7 @@ describe('Game', () => {
         this.putDown()
       })
 
-      eventLoop.enqueue(() => {
-        assert(board.karel().isCarrying())
-      })
+      assert(board.karel().isCarrying())
 
       // Going back so I can drop the boulder
       game.resolve(function () {
@@ -42,11 +40,8 @@ describe('Game', () => {
         this.putDown()
       })
 
-      eventLoop.enqueue(() => {
-        assert.deepEqual(board.boulders()[0].coordinates(), { x: 1, y: 3 })
-        eventLoop.stop()
-        done()
-      })
+      assert.deepEqual(board.boulders()[0].coordinates(), { x: 1, y: 3 })
+      eventLoop.stop()
     })
   })
 })
