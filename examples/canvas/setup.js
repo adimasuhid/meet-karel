@@ -24,8 +24,8 @@
     }
   });
 
-  document.getElementById("stop").addEventListener("click", function () {
-    window.game.stop()
+  document.getElementById("reset").addEventListener("click", function () {
+    window.game.reset()
   })
 
   window.game.render()
