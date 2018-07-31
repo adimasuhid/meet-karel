@@ -1,27 +1,25 @@
-// Stage 4
+// Stage 5
 (function () {
   function randomInt(min,max){
     return Math.floor(Math.random()*(max-min+1)+min);
   }
 
   let eventLoop = new Karel.EventLoop({ speed: 500 })
-  let potentialCoords = [
-    { x: 8, y: 4 },
-    { x: 8, y: 5 },
-    { x: 6, y: 5 },
-    { x: 7, y: 5 },
-  ]
   let boulderCoords = [
-    potentialCoords[randomInt(0,3)]
+    { x: randomInt(1, 13), y: randomInt(1, 8) },
   ]
 
   let wallCoords = [
-    { x: 11, y: 1 },
-    { x: 10, y: 8 },
-    { x: 4, y: 7 },
-    { x: 5, y: 2 },
-    { x: 9, y: 3 },
-    { x: 8, y: 6 },
+    { x: randomInt(1, 13), y: randomInt(1, 8) },
+    { x: randomInt(1, 13), y: randomInt(1, 8) },
+    { x: randomInt(1, 13), y: randomInt(1, 8) },
+    { x: randomInt(1, 13), y: randomInt(1, 8) },
+    { x: randomInt(1, 13), y: randomInt(1, 8) },
+    { x: randomInt(1, 13), y: randomInt(1, 8) },
+    { x: randomInt(1, 13), y: randomInt(1, 8) },
+    { x: randomInt(1, 13), y: randomInt(1, 8) },
+    { x: randomInt(1, 13), y: randomInt(1, 8) },
+    { x: randomInt(1, 13), y: randomInt(1, 8) },
   ]
   let board = new Karel.Board({ width: 15, height: 10, boulders: boulderCoords, walls: wallCoords })
   let resolver = new Karel.Resolver({ board: board })
